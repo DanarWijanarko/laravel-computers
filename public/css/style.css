@@ -1,0 +1,22 @@
+.bg-about-1 {
+    background-image: url('../img/1.jpg');
+}
+.bg-about-2 {
+    background-image: url('../img/2.jpg');
+}
+.bg-about-3 {
+    background-image: url('../img/3.jpg');
+}
+.bg-home {
+    background-image: url('../img/home.webp');
+}
+.bg-contact {
+    background-image: url('../img/contact.jpeg');
+}
+.bg-logres {
+    background-image: url('../img/logres.jpg');
+}
+.bg-my-laptop {
+    background-image: url('../img/about.svgp');
+}
+

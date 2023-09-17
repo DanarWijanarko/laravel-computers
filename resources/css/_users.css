@@ -1,0 +1,20 @@
+@layer components {
+    .users-section {
+        @apply flex h-[100vh] items-center justify-center bg-[rgb(0,0,0,0.5)] bg-center bg-no-repeat bg-blend-multiply;
+    }
+    .users-container {
+        @apply relative w-[450px] rounded-lg bg-slate-200 px-10 py-7 shadow-lg;
+    }
+    .users-btn-cancel {
+        @apply absolute left-3 top-2 text-slate-500 transition-all hover:text-slate-400;
+    }
+    .users-title {
+        @apply mb-7 mt-3 text-center text-3xl font-bold text-slate-800;
+    }
+    .users-btn-show-hide {
+        @apply absolute right-3 top-2.5 text-slate-500 hover:text-sky-500;
+    }
+    .users-btn-link {
+        @apply font-medium text-sky-500 transition-all hover:text-sky-400;
+    }
+}

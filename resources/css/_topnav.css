@@ -1,0 +1,40 @@
+.nav-link-ul {
+    @apply mt-4 flex flex-col rounded-lg border border-white bg-white p-4 font-medium shadow-lg md:shadow-none md:mt-[0.3rem] md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0;
+}
+.nav-link {
+    @apply md:after:block after:border-b-2 after:border-sky-100 after:mt-0.5 after:scale-x-0 after:hover:border-sky-300 after:hover:scale-95 after:transition-all after:ease-in-out;
+    @apply block rounded py-2 pl-3 pr-4 my-1 text-sky-900 font-semibold hover:bg-sky-200 hover:rounded-lg text-center md:border-0 md:my-0 md:p-0 md:hover:bg-transparent md:text-sky-100 md:hover:text-sky-300 transition-all;
+}
+.nav-collapse-button {
+    @apply rounded-lg px-1 md:hidden;
+}
+.nav-dropdown-link {
+    @apply block w-full text-start px-4 py-2 hover:bg-slate-200 hover:text-sky-400 focus:bg-slate-300 transition-all duration-300;
+}
+.nav-dropdown-username {
+    @apply hidden font-semibold text-slate-100 transition-all group-hover:cursor-pointer group-hover:text-sky-300 md:block;
+}
+.hamburger-line {
+    @apply w-[23.5px] h-[2px] my-1.5 block bg-slate-100;
+}
+.after-footer-hover {
+    @apply after:block after:w-10 after:border-b-2 after:border-sky-100 after:mt-0.5 after:-mb-1 after:scale-x-0 after:hover:border-sky-300 after:origin-left after:hover:scale-95 after:transition-all after:ease-in-out;
+}
+.nav-active {
+    @apply text-sky-900 bg-sky-200 md:after:hidden;
+    @apply md:text-sky-500 md:bg-transparent md:hover:text-sky-500 md:after:hidden;
+}
+.navbar-fixed {
+    @apply fixed z-[9999] bg-black bg-opacity-60;
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+}
+.hamburger-active > span:nth-child(1) {
+    @apply rotate-45;
+}
+.hamburger-active > span:nth-child(2) {
+    @apply scale-0;
+}
+.hamburger-active > span:nth-child(3) {
+    @apply -rotate-45;
+}
