@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('laptops', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('series_id');
+            $table->foreignId('company_id');
             $table->string('name');
-            $table->string('email');
-            $table->text('message');
+            $table->string('slug')->unique();
+            $table->string('image')->nullable();
+            $table->text('excerpt');
+            $table->text('body');
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('laptops');
     }
 };

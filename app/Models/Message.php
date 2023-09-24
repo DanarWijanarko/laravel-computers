@@ -14,4 +14,9 @@ class Message extends Model
         'email',
         'message'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }

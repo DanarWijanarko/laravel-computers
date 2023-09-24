@@ -84,31 +84,24 @@ if (DeleteLaptopIfNotExist != null) {
 
 // *-----------------------------Delete Message-----------------------------
 
-const formDeleteMessage = document.querySelector("#form-delete-message");
-const btnDeleteMessage = document.querySelector("#btn-delete-message");
-
-const DeleteMessageIfNotExist = formDeleteMessage || btnDeleteMessage;
-
-if (DeleteMessageIfNotExist != null) {
-    btnDeleteMessage.addEventListener("click", function (event) {
-        const messageName = this.getAttribute("message-name");
-        event.preventDefault();
-
-        Swal.fire({
-            title: "Are You Sure Want to Delete ?",
-            text: "Message '" + messageName + "' Will be Deleted Permanently.",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#0ea5e9",
-            cancelButtonColor: "#dc2626",
-            confirmButtonText: "Yes, Sure!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                formDeleteMessage.submit();
-            }
-        });
+$(".btn-delete-message").on("click", function (e) {
+    e.preventDefault();
+    let formDeleteMessage = $(this).closest(".form-delete-message");
+    let messageName = $(this).attr('message-name');
+    Swal.fire({
+        title: "Are You Sure Want to Delete ?",
+        text: "Message '" + messageName + "' Will be Deleted Permanently.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#0ea5e9",
+        cancelButtonColor: "#dc2626",
+        confirmButtonText: "Yes, Sure!",
+    }).then((result) => {
+        if (result.value) {
+            formDeleteMessage.submit();
+        }
     });
-}
+});
 
 // *-----------------------------Submit Message Success-----------------------------
 

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
-use App\Http\Requests\StoreMessageRequest;
-use App\Http\Requests\UpdateMessageRequest;
 
 class MessageController extends Controller
 {
@@ -13,54 +11,18 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreMessageRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Message $message)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Message $message)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateMessageRequest $request, Message $message)
-    {
-        //
+        return view('admin.message', [
+            'messages' => Message::latest()->paginate(5)->withQueryString()
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Message $message)
+    public function destroy(Message $name)
     {
-        //
+        Message::destroy($name->id);
+
+        return back()->with('messageDeleted', 'Pesan Dengan Nama "' . $name->name . '" Berhasil Dihapus!');
     }
 }

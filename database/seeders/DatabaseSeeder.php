@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Article;
+use App\Models\Laptop;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -32,9 +33,10 @@ class DatabaseSeeder extends Seeder
 
         Message::factory(20)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Laptop::factory(100)->create();
+
+        $this->call([SeriesSeeder::class]);
+
+        $this->call([CompanySeeder::class]);
     }
 }

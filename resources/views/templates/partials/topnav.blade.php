@@ -87,7 +87,7 @@
                     <a href="{{ route('laptops') }}" class="nav-link {{ Active::checkRoute('laptops') }}">Laptops</a>
                 </li>
                 <li>
-                    <a href="{{ route('articles') }}" class="nav-link {{ Active::checkRoute('articles') }}">Articles</a>
+                    <a href="{{ route('articles') }}" class="nav-link {{ Active::checkRoute(['articles', 'articleDetail']) }}">Articles</a>
                 </li>
             </ul>
         </div>
@@ -109,7 +109,7 @@
                     <a href="{{ route('laptops') }}" class="nav-link {{ Active::checkRoute('laptops') }}">Laptops</a>
                 </li>
                 <li>
-                    <a href="{{ route('articles') }}" class="nav-link {{ Active::checkRoute('articles') }}">Articles</a>
+                    <a href="{{ route('articles') }}" class="nav-link {{ Active::checkRoute(['articles', 'articleDetail']) }}">Articles</a>
                 </li>
             </ul>
         </div>
