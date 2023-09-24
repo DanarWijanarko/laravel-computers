@@ -12,9 +12,9 @@ class DashboardController extends Controller
     public function index(Message $message, Article $articles, Laptop $laptop)
     {
         return view('admin.dashboard', [
-            'messages' => $message->latest()->paginate(5)->withQueryString(),
-            'articles' => $articles->latest()->paginate(5)->withQueryString(),
-            'laptops' => $laptop->latest()->paginate(5)->withQueryString(),
+            'messages' => $message->latest()->paginate(5, ['*'], 'message_page')->withQueryString(),
+            'articles' => $articles->latest()->paginate(5, ['*'], 'articles_page')->withQueryString(),
+            'laptops' => $laptop->latest()->paginate(5, ['*'], 'laptops_page')->withQueryString(),
         ]);
     }
 }

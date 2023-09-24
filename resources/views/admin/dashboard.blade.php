@@ -89,7 +89,7 @@
                     @foreach ($articles as $article)
                         <tr class="table-body-tr">
                             {{-- No --}}
-                            <td class="text-center text-lg font-light">{{ $loop->iteration }}</td>
+                            <td class="text-center text-lg font-light">{{ $loop->iteration + $articles->firstItem() - 1 }}.</td>
                             {{-- Articles --}}
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
@@ -144,7 +144,7 @@
                     @foreach ($laptops as $laptop)
                         <tr class="table-body-tr">
                             {{-- No --}}
-                            <td class="text-center text-lg font-light">{{ $loop->iteration }}</td>
+                            <td class="text-center text-lg font-light">{{ $loop->iteration + $laptops->firstItem() - 1 }}.</td>
                             {{-- Laptops --}}
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
@@ -199,7 +199,7 @@
                     @foreach ($messages as $message)
                         <tr class="table-body-tr">
                             {{-- No --}}
-                            <td class="text-center text-lg font-light">{{ $loop->iteration }}</td>
+                            <td class="text-center text-lg font-light">{{ $loop->iteration + $messages->firstItem() - 1 }}.</td>
                             {{-- Name --}}
                             <td class="py-3text-sm px-4 font-semibold">{{ $message->name }}</td>
                             {{-- Email --}}
