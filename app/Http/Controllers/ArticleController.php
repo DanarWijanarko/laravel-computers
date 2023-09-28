@@ -5,15 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Models\Category;
+use App\Models\User;
+use Auth;
 
 class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($header = '')
     {
-        //
+        if (request('category')) {
+            $category = Category::firstWhere('slug', request('category'));
+            $header = 'Category : ' . $category->name;
+        }
+
+        if (request('author')) {
+            $author = User::firstWhere('username', request('author'));
+            $header = 'Author : ' . $author->name;
+        }
+
+        return view('admin.article.edit', [
+            'articles' => Article::where('user_id', Auth::id())->latest()->filter(request(['search', 'category', 'author']))->paginate(8)->withQueryString(),
+            'header' => $header
+        ]);
     }
 
     /**
@@ -21,7 +37,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.article.create');
     }
 
     /**
@@ -37,7 +53,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('admin.article.show', [
+            'article' => $article,
+        ]);
     }
 
     /**
@@ -45,7 +63,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return 'Method Edit';
     }
 
     /**
@@ -61,6 +79,6 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        return 'Method Destroy';
     }
 }

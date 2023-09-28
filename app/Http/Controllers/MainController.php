@@ -44,7 +44,7 @@ class MainController extends Controller
             $header = 'Article in Category: ' . $category->name;
         }
 
-        if (request('company')) {
+        if (request('author')) {
             $author = User::firstWhere('username', request('author'));
             $header = 'Article by Author: ' . $author->name;
         }

@@ -58,11 +58,48 @@
             </div>
             {{-- Theme Toggle For Dark & Light Mode End --}}
 
+            {{-- Notification Start --}}
+            <li class="relative">
+                {{-- Notification Button Start --}}
+                <button class="header-notification-menu-button" @click="toggleNotificationsMenu">
+                    <i class="fa-solid fa-bell h-5 w-5"></i>
+                    @if (!(Auth::user()->image && Auth::user()->address && Auth::user()->caption))
+                        <span class="header-notification-badge"></span>
+                        <span class="animate-ping">
+                            <span class="header-notification-badge-animate"></span>
+                        </span>
+                    @endif
+                </button>
+                {{-- Notification Button End --}}
+
+                {{-- Notification Dropdown Menu Start --}}
+                <div x-show="isNotificationsMenuOpen" @click.outside="closeNotificationsMenu" @keydown.escape="closeNotificationsMenu"
+                    x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-50"
+                    x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-50">
+                    <ul class="header-ul">
+                        <li class="flex">
+                            @if (!(Auth::user()->image && Auth::user()->address && Auth::user()->caption))
+                                <p class="text-center text-sm font-bold text-slate-800 dark:text-slate-200">
+                                    You Must Complete the Profile Data.
+                                </p>
+                            @else
+                                <p class="text-center text-sm font-bold text-slate-800 dark:text-slate-200">
+                                    You don't have any notification.
+                                </p>
+                            @endif
+                        </li>
+                    </ul>
+                </div>
+                {{-- Notification Dropdown Menu End --}}
+            </li>
+            {{-- Notification End --}}
+
             {{-- Profile Start --}}
             <li class="relative">
                 {{-- Profile Menu Button Start --}}
                 <button class="header-profile-menu-button" @click="toggleProfileMenu">
-                    <p class="mr-3 hidden md:block">Danar Wijanarko</p>
+                    <p class="mr-3 hidden md:block">{{ Auth::user()->name }}</p>
                     <img class="h-8 w-8 rounded-full object-cover" src="{{ asset('img/hanni.jpeg') }}" />
                 </button>
                 {{-- Profile Menu Button End --}}
@@ -84,7 +121,7 @@
 
                         {{-- Profile Start --}}
                         <li class="flex">
-                            <a class="header-li-link" href="#">
+                            <a class="header-li-link" href="{{ route('profile', ['user' => Auth::user()->username]) }}">
                                 <i class="fa-solid fa-user ml-2 mr-4 flex w-2 justify-center"></i>
                                 <span>Profile</span>
                             </a>

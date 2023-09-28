@@ -16,12 +16,14 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
+    public function run() : void
     {
         User::create([
             'name' => 'Danar Wijanarko',
             'username' => 'dnoobody',
             'email' => 'danarwijanarko98@gmail.com',
+            'address' => 'Jl. Ahmad Yani No. 95 Trenggalek',
+            'caption' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem architecto explicabo qui illo cum. Voluptatibus.',
             'password' => bcrypt('Kowe213345')
         ]);
 

@@ -79,6 +79,10 @@ function dataUsers() {
         toggleShowHide() {
             this.isInputShow = !this.isInputShow;
         },
+        isInputShowConfirm: false,
+        toggleShowHideConfirm() {
+            this.isInputShowConfirm = !this.isInputShowConfirm;
+        },
     };
 }
 

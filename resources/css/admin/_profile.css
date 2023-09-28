@@ -1,0 +1,23 @@
+@layer components {
+    .profile-container {
+        @apply mt-16 flex flex-col items-center justify-center gap-10 xl:grid xl:grid-cols-[350px_minmax(350px,_1fr)] xl:place-items-center;
+    }
+    .profile-picture-container {
+        @apply flex h-[450px] w-96 items-center justify-center overflow-hidden rounded-xl border-4 border-slate-400 bg-slate-300 shadow-xl dark:border-slate-500 dark:bg-slate-600;
+    }
+    .profile-picture-link {
+        @apply flex flex-col items-center justify-center gap-3 text-slate-50 dark:text-slate-300;
+    }
+    .profile-account-information {
+        @apply flex h-[450px] w-full flex-col justify-center overflow-y-auto rounded-xl border-4 border-slate-400 bg-slate-200 shadow-xl dark:border-slate-500 dark:bg-slate-600;
+    }
+    .profile-account-even {
+        @apply items-center bg-slate-50 px-4 py-5 dark:bg-slate-400 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6;
+    }
+    .profile-account-odd {
+        @apply items-center bg-slate-200 px-4 py-5 dark:bg-slate-600 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6;
+    }
+    .profile-title {
+        @apply text-sm font-medium text-slate-500 dark:text-slate-700;
+    }
+}

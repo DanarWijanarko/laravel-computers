@@ -13,7 +13,7 @@
             Dashboard
         </a>
         <span class="admin-url-info-slash">/</span>
-        <a href="{{ route('edit-article') }}" class="admin-url-info-link">
+        <a href="{{ route('article.index') }}" class="admin-url-info-link">
             Edit Article
         </a>
         <span class="admin-url-info-slash">/</span>

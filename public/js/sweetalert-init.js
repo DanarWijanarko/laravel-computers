@@ -28,31 +28,24 @@ if (jika != null) {
 
 // *-----------------------------Delete Article-----------------------------
 
-const formDeleteArticle = document.querySelector("#form-delete-article");
-const btnDeleteArticle = document.querySelector("#btn-delete-article");
-
-const DeleteArticleIfNotExist = formDeleteArticle || btnDeleteArticle;
-
-if (DeleteArticleIfNotExist != null) {
-    btnDeleteArticle.addEventListener("click", function (event) {
-        const articleName = this.getAttribute("article-name");
-        event.preventDefault();
-
-        Swal.fire({
-            title: "Are You Sure Want to Delete ?",
-            text: "Article '" + articleName + "' Will be Deleted Permanently.",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#0ea5e9",
-            cancelButtonColor: "#dc2626",
-            confirmButtonText: "Yes, Sure!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                formDeleteArticle.submit();
-            }
-        });
+$(".btn-delete-article").on("click", function (e) {
+    e.preventDefault();
+    let formDeleteArticle = $(this).closest(".form-delete-article");
+    let articleName = $(this).attr("article-name");
+    Swal.fire({
+        title: "Are You Sure Want to Delete ?",
+        text: "Article '" + articleName + "' Will be Deleted Permanently.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#0ea5e9",
+        cancelButtonColor: "#dc2626",
+        confirmButtonText: "Yes, Sure!",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            formDeleteArticle.submit();
+        }
     });
-}
+});
 
 // *-----------------------------Delete Laptop-----------------------------
 
@@ -87,7 +80,7 @@ if (DeleteLaptopIfNotExist != null) {
 $(".btn-delete-message").on("click", function (e) {
     e.preventDefault();
     let formDeleteMessage = $(this).closest(".form-delete-message");
-    let messageName = $(this).attr('message-name');
+    let messageName = $(this).attr("message-name");
     Swal.fire({
         title: "Are You Sure Want to Delete ?",
         text: "Message '" + messageName + "' Will be Deleted Permanently.",

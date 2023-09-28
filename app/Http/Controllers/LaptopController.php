@@ -13,7 +13,7 @@ class LaptopController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.laptop.edit');
     }
 
     /**
@@ -21,7 +21,7 @@ class LaptopController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.laptop.create');
     }
 
     /**

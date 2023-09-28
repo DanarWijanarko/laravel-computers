@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaptopController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -16,66 +19,50 @@ use Illuminate\Support\Facades\Route;
  *
  */
 
+// ! Main Start
 Route::controller(MainController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/about', 'about')->name('about');
-    Route::get('/contact', 'contact')->name('contact');
-    Route::post('/contact/store', 'contactStore')->name('sendMessage');
-    Route::get('/articles', 'articles')->name('articles');
-    Route::get('/articles/{article}', 'detail')->name('articleDetail');
-    Route::get('/laptops', 'laptops')->name('laptops');
-    Route::get('/laptos/{laptop}', 'laptopDetail')->name('laptopDetail');
+    Route::get('/contact', 'contact')->name('contact')->middleware('auth');
+    Route::post('/contact/store', 'contactStore')->name('sendMessage')->middleware('auth');
+    Route::get('/articles', 'articles')->name('articles')->middleware('auth');
+    Route::get('/articles/{article}', 'detail')->name('articleDetail')->middleware('auth');
+    Route::get('/laptops', 'laptops')->name('laptops')->middleware('auth');
+    Route::get('/laptos/{laptop}', 'laptopDetail')->name('laptopDetail')->middleware('auth');
 });
+// ! Main End
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// ! Admin Start
+// * Dashboard Page
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-Route::resource('/message', MessageController::class)->only(['index', 'destroy'])->names([
+// * Articles Page
+Route::resource('/dashboard/article', ArticleController::class)->middleware('auth');
+
+// * Laptops Page
+Route::resource('/dashboard/laptop', LaptopController::class)->middleware('auth');
+
+// * Message Page
+Route::resource('/dashboard/message', MessageController::class)->only(['index', 'destroy'])->names([
     'index' => 'message',
     'destroy' => 'delete'
-])->parameters(['message' => 'name']);
+])->parameters(['message' => 'name'])->middleware('auth');
+// ! Admin End
 
-Route::get('/article', function () {
-    return view('admin.article.edit');
-})->name('edit-article');
+// ! Users Start
+Route::controller(UserController::class)->group(function () {
+    // * Login & Register Page
+    Route::get('/login', 'index')->name('login')->middleware('guest');
+    Route::post('/login', 'authenticate')->name('authenticate')->middleware('guest');
+    Route::get('/register', 'create')->name('register')->middleware('guest');
+    Route::post('/register', 'store')->name('storeAcc')->middleware('guest');
+    Route::post('/logout', 'logout')->name('logout');
+    // * Profile Page
+    Route::get('/profile/{user}', 'show')->name('profile')->middleware('auth');
+});
+// ! Users End
 
-Route::get('/article/create', function () {
-    return view('admin.article.create');
-})->name('create-article');
 
-Route::get('/laptop', function () {
-    return view('admin.laptop.edit');
-})->name('edit-laptop');
-
-Route::get('/laptop/create', function () {
-    return view('admin.laptop.create');
-})->name('create-laptop');
-
-// Route::get('/message', function () {
-//     return view('admin.message');
-// })->name('message');
-
-Route::get('/login', function () {
-    return view('users.login');
-})->name('login');
-
-Route::post('/doLogin', function () {
-    return redirect('login')->with([
-        'type' => 'danger',
-        'message' => 'Login Failed!'
-    ]);
-})->name('doLogin');
-
-Route::get('/register', function () {
-    return view('users.register');
-})->name('register');
-
-Route::post('/doRegister', function () {
-    return redirect('register')->with([
-        'type' => 'success',
-        'message' => 'Registrasi akun berhasil silahkan Login!'
-    ]);
-})->name('doRegister');
-
-Route::post('/logout', function () {
-    return "Yeyyy";
-})->name('logout');
+Route::get('/401', function () {
+    return view('error.notLoggedIn');
+})->name('401')->middleware('guest');

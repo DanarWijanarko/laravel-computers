@@ -25,14 +25,14 @@
             {{-- Dashboard End --}}
 
             {{-- Article Dropdown Start --}}
-            <li class="relative px-6 py-3" x-data="{{ Active::checkRoute(['edit-article', 'create-article'], '{ isArticleMenuOpen: true }') }}">
+            <li class="relative px-6 py-3" x-data="{{ Active::checkRoute(['article.index', 'article.create'], '{ isArticleMenuOpen: true }') }}">
                 {{-- Line Active Start --}}
-                <span class="{{ Active::checkRoute(['edit-article', 'create-article'], 'sidebar-line-active') }}"></span>
+                <span class="{{ Active::checkRoute(['article.index', 'article.create', 'article.show'], 'sidebar-line-active') }}"></span>
                 {{-- Line Active End --}}
 
                 {{-- Toggle Button Articles Start --}}
                 <button @click="toggleArticleMenu"
-                    class="sidebar-link-toggle {{ Active::checkRoute(['edit-article', 'create-article'], 'sidebar-link-active') }}">
+                    class="sidebar-link-toggle {{ Active::checkRoute(['article.index', 'article.create', 'article.show'], 'sidebar-link-active') }}">
                     <span class="inline-flex items-center">
                         <i class="fa-solid fa-newspaper ml-0.5 text-lg"></i>
                         <span class="ml-4">Article</span>
@@ -46,15 +46,15 @@
                 <div x-show="isArticleMenuOpen" x-transition>
                     <ul class="sidebar-dropdown">
                         {{-- Edit Article --}}
-                        <li class="sidebar-dropdown-link {{ Active::checkRoute('edit-article', 'sidebar-dropdown-link-active') }}">
-                            <a class="w-full" href="{{ route('edit-article') }}">
+                        <li class="sidebar-dropdown-link {{ Active::checkRoute('article.index', 'sidebar-dropdown-link-active') }}">
+                            <a class="w-full" href="{{ route('article.index') }}">
                                 <i class="fa-solid fa-pen-to-square mr-1"></i>
                                 Edit Article
                             </a>
                         </li>
                         {{-- Create Article --}}
-                        <li class="sidebar-dropdown-link {{ Active::checkRoute('create-article', 'sidebar-dropdown-link-active') }}">
-                            <a class="w-full" href="{{ route('create-article') }}">
+                        <li class="sidebar-dropdown-link {{ Active::checkRoute('article.create', 'sidebar-dropdown-link-active') }}">
+                            <a class="w-full" href="{{ route('article.create') }}">
                                 <i class="fa-solid fa-plus mr-1"></i>
                                 Create Article
                             </a>
@@ -66,14 +66,14 @@
             {{-- Article Dropdown End --}}
 
             {{-- Laptops Start --}}
-            <li class="relative px-6 py-3" x-data="{{ Active::checkRoute(['edit-laptop', 'create-laptop'], '{ isLaptopMenuOpen: true }') }}">
+            <li class="relative px-6 py-3" x-data="{{ Active::checkRoute(['laptop.index', 'laptop.create'], '{ isLaptopMenuOpen: true }') }}">
                 {{-- Line Active End --}}
-                <span class="{{ Active::checkRoute(['edit-laptop', 'create-laptop'], 'sidebar-line-active') }}"></span>
+                <span class="{{ Active::checkRoute(['laptop.index', 'laptop.create'], 'sidebar-line-active') }}"></span>
                 {{-- Line Active End --}}
 
                 {{-- Toggle Button Laptops Start --}}
                 <button @click="toggleLaptopMenu"
-                    class="sidebar-link-toggle {{ Active::checkRoute(['edit-laptop', 'create-laptop'], 'sidebar-link-active') }}">
+                    class="sidebar-link-toggle {{ Active::checkRoute(['laptop.index', 'laptop.create'], 'sidebar-link-active') }}">
                     <span class="inline-flex items-center">
                         <i class="fa-solid fa-laptop ml-0.5"></i>
                         <span class="ml-4">Laptop</span>
@@ -86,15 +86,15 @@
                 <div x-show="isLaptopMenuOpen" x-transition>
                     <ul class="sidebar-dropdown">
                         {{-- Edit Laptop --}}
-                        <li class="sidebar-dropdown-link {{ Active::checkRoute('edit-laptop', 'sidebar-dropdown-link-active') }}">
-                            <a class="w-full" href="{{ route('edit-laptop') }}">
+                        <li class="sidebar-dropdown-link {{ Active::checkRoute('laptop.index', 'sidebar-dropdown-link-active') }}">
+                            <a class="w-full" href="{{ route('laptop.index') }}">
                                 <i class="fa-solid fa-pen-to-square mr-1"></i>
                                 Edit Laptop
                             </a>
                         </li>
                         {{-- Add Laptop --}}
-                        <li class="sidebar-dropdown-link {{ Active::checkRoute('create-laptop', 'sidebar-dropdown-link-active') }}">
-                            <a class="w-full" href="{{ route('create-laptop') }}">
+                        <li class="sidebar-dropdown-link {{ Active::checkRoute('laptop.create', 'sidebar-dropdown-link-active') }}">
+                            <a class="w-full" href="{{ route('laptop.create') }}">
                                 <i class="fa-solid fa-plus mr-1"></i>
                                 Add Laptop
                             </a>

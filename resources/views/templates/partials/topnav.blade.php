@@ -12,11 +12,11 @@
         {{-- Account & Hamburger Button Right Start --}}
         <div class="relative flex items-center md:order-2">
             {{-- Harus Sign In Jika Ingin masuk ke halaman laptops, articles, contact --}}
-            @if (true)
+            @if (Auth::check())
                 {{-- Button Account Start --}}
                 <button @click="toggleProfileMenuMain" class="group mr-3 flex items-center gap-3 self-center">
                     <span class="nav-dropdown-username">
-                        Danar Wijanarko
+                        {{ Auth::user()->name }}
                     </span>
                     <img src="{{ asset('img/hanni.jpeg') }}" class="w-7 rounded-full transition-all group-hover:opacity-80">
                 </button>
@@ -29,15 +29,13 @@
                     x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-50"
                     class="absolute right-12 top-14 z-10 w-44 divide-y divide-slate-300 rounded-lg bg-white font-normal shadow-lg md:right-3">
                     {{-- Dashboard Start --}}
-                    @if (true)
-                        <ul class="text-md py-2 text-slate-700">
-                            <li>
-                                <a href="{{ route('dashboard') }}" class="nav-dropdown-link">
-                                    <i class="fa-solid fa-gauge-high mr-2"></i>Dashboard
-                                </a>
-                            </li>
-                        </ul>
-                    @endif
+                    <ul class="text-md py-2 text-slate-700">
+                        <li>
+                            <a href="{{ route('dashboard') }}" class="nav-dropdown-link">
+                                <i class="fa-solid fa-gauge-high mr-2"></i>Dashboard
+                            </a>
+                        </li>
+                    </ul>
                     {{-- Dashboard End --}}
 
                     {{-- Sign Out Form Start --}}

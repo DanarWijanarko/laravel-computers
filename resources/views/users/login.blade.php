@@ -17,23 +17,26 @@
             {{-- Alert End --}}
 
             {{-- Login Form Start --}}
-            <form action="{{ route('doLogin') }}" method="POST">
+            <form action="{{ route('authenticate') }}" method="POST">
                 @csrf
                 {{-- Input Email Address Start --}}
                 <div class="group relative z-0 mb-8 w-full">
-                    <input type="email" id="email" class="floating-input peer" placeholder="" name="email">
+                    <input type="email" id="email" class="floating-input @error('email') is-invalid @enderror peer" placeholder="" name="email">
                     <label for="email" class="floating-label">Email address</label>
-                    @if (false)
-                        <p class="is-invalid mt-2 text-xs">Email Address Invalid.</p>
-                    @endif
+                    @error('email')
+                        <p class="is-invalid mt-2 text-xs">{{ $message }}</p>
+                    @enderror
                 </div>
                 {{-- Input Email Address End --}}
 
                 {{-- Input Password Start --}}
                 <div class="group relative z-0 mb-8 w-full">
-                    <input :type="isInputShow ? 'text' : 'password'" class="floating-input peer" placeholder="" name="password">
+                    <input :type="isInputShow ? 'text' : 'password'" class="floating-input @error('password') is-invalid @enderror peer" placeholder=""
+                        name="password">
                     <label for="password" class="floating-label">Password</label>
-
+                    @error('password')
+                        <p class="is-invalid mt-2 text-xs">{{ $message }}</p>
+                    @enderror
                     {{-- Toggle Show & Hide Password Start --}}
                     <button @click="toggleShowHide" type="button" class="users-btn-show-hide">
                         <i class="fa-regular" :class="isInputShow ? 'fa-eye-slash' : 'fa-eye'"></i>

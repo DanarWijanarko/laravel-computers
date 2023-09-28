@@ -17,6 +17,9 @@
     background-image: url('../img/logres.jpg');
 }
 .bg-my-laptop {
-    background-image: url('../img/about.svgp');
+    background-image: url('../img/about.svg');
+}
+.bg-401 {
+    background-image: url('../img/401.png');
 }
 

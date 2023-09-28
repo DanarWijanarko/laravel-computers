@@ -13,7 +13,7 @@
             Dashboard
         </a>
         <span class="admin-url-info-slash">/</span>
-        <a href="{{ route('edit-laptop') }}" class="admin-url-info-link">
+        <a href="{{ route('laptop.index') }}" class="admin-url-info-link">
             Edit Laptop
         </a>
         <span class="admin-url-info-slash">/</span>
