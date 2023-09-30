@@ -36,7 +36,7 @@ class UserController extends Controller
 
         return back()->with([
             'type' => 'danger',
-            'message' => 'Login Failed!'
+            'message' => 'Incorrect Username or Password!'
         ]);
     }
 
