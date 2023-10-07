@@ -6,6 +6,7 @@ use App\Http\Controllers\LaptopController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -59,9 +60,16 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/logout', 'logout')->name('logout');
     // * Profile Page
     Route::get('/profile/{user}', 'show')->name('profile')->middleware('auth');
+    Route::get('/profile/{user}/edit', 'edit')->name('editProfile')->middleware('auth');
+    Route::post('/profile/{user}/update', 'update')->name('updateProfile')->middleware('auth');
 });
 // ! Users End
 
+Route::get('/settings', function () {
+    return view('admin.settings', [
+        'users' => User::all()
+    ]);
+})->name('settings')->middleware('auth');
 
 Route::get('/401', function () {
     return view('error.notLoggedIn');

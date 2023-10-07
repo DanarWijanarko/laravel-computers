@@ -63,7 +63,7 @@
                 {{-- Notification Button Start --}}
                 <button class="header-notification-menu-button" @click="toggleNotificationsMenu">
                     <i class="fa-solid fa-bell h-5 w-5"></i>
-                    @if (!(Auth::user()->image && Auth::user()->address && Auth::user()->caption))
+                    @if (!(Auth::user()->profile_image && Auth::user()->address && Auth::user()->profile_caption))
                         <span class="header-notification-badge"></span>
                         <span class="animate-ping">
                             <span class="header-notification-badge-animate"></span>
@@ -79,7 +79,7 @@
                     x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-50">
                     <ul class="header-ul">
                         <li class="flex">
-                            @if (!(Auth::user()->image && Auth::user()->address && Auth::user()->caption))
+                            @if (!(Auth::user()->profile_image && Auth::user()->address && Auth::user()->profile_caption))
                                 <p class="text-center text-sm font-bold text-slate-800 dark:text-slate-200">
                                     You Must Complete the Profile Data.
                                 </p>
@@ -100,7 +100,13 @@
                 {{-- Profile Menu Button Start --}}
                 <button class="header-profile-menu-button" @click="toggleProfileMenu">
                     <p class="mr-3 hidden md:block">{{ Auth::user()->name }}</p>
-                    <img class="h-8 w-8 rounded-full object-cover" src="{{ asset('img/hanni.jpeg') }}" />
+                    @if (Auth::user()->profile_image)
+                        <img class="h-8 w-8 rounded-full object-cover" src="{{ asset('storage/' . Auth::user()->profile_image) }}" />
+                    @else
+                        <div class="relative h-8 w-8 rounded-full border-2 border-slate-500 bg-slate-200">
+                            <i class="fa-solid fa-user absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-[45%]"></i>
+                        </div>
+                    @endif
                 </button>
                 {{-- Profile Menu Button End --}}
 
@@ -130,7 +136,7 @@
 
                         {{-- Settings Start --}}
                         <li class="flex">
-                            <a class="header-li-link" href="#">
+                            <a class="header-li-link" href="{{ route('settings') }}">
                                 <i class="fa-solid fa-gears ml-2 mr-[15px] flex w-2 justify-center"></i>
                                 <span>Settings</span>
                             </a>

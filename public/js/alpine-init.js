@@ -86,9 +86,19 @@ function dataUsers() {
     };
 }
 
-function previewImage() {
+function ImageChecker(user_profile) {
+    if (user_profile != "http://laravel-computers.me/storage") {
+        src = user_profile;
+    } else {
+        src = "";
+    }
+
+    return previewImage(src)
+}
+
+function previewImage(src) {
     return {
-        imageUrl: "",
+        imageUrl: src,
 
         fileChosen(event) {
             this.fileToDataUrl(event, (src) => (this.imageUrl = src));

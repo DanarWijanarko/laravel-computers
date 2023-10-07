@@ -96,6 +96,27 @@ $(".btn-delete-message").on("click", function (e) {
     });
 });
 
+// *-----------------------------Delete Users-----------------------------
+
+$(".btn-delete-user").on("click", function (e) {
+    e.preventDefault();
+    let formDeleteuser = $(this).closest(".form-delete-user");
+    let userName = $(this).attr("user-name");
+    Swal.fire({
+        title: "Are You Sure Want to Delete ?",
+        text: "User '" + userName + "' Will be Deleted Permanently.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#0ea5e9",
+        cancelButtonColor: "#dc2626",
+        confirmButtonText: "Yes, Sure!",
+    }).then((result) => {
+        if (result.value) {
+            formDeleteuser.submit();
+        }
+    });
+});
+
 // *-----------------------------Submit Message Success-----------------------------
 
 const success = document.querySelector("#success");

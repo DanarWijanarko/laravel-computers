@@ -18,7 +18,14 @@
                     <span class="nav-dropdown-username">
                         {{ Auth::user()->name }}
                     </span>
-                    <img src="{{ asset('img/hanni.jpeg') }}" class="w-7 rounded-full transition-all group-hover:opacity-80">
+                    @if (Auth::user()->profile_image)
+                        <img src="{{ asset('storage/' . Auth::user()->profile_image) }}"
+                            class="h-8 w-8 rounded-full border-2 border-slate-300 transition-all group-hover:opacity-80">
+                    @else
+                        <div class="relative h-8 w-8 rounded-full border-2 border-slate-500 text-slate-50">
+                            <i class="fa-solid fa-user absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-[45%]"></i>
+                        </div>
+                    @endif
                 </button>
                 {{-- Button Account End --}}
 

@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'dnoobody',
             'email' => 'danarwijanarko98@gmail.com',
             'address' => 'Jl. Ahmad Yani No. 95 Trenggalek',
-            'caption' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem architecto explicabo qui illo cum. Voluptatibus.',
+            'profile_caption' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem architecto explicabo qui illo cum. Voluptatibus.',
             'password' => bcrypt('Kowe213345')
         ]);
 
